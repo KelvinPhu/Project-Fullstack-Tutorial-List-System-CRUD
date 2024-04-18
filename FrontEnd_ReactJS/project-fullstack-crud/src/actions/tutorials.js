@@ -77,6 +77,19 @@ export const deleteAllTutorials = () => async (dispatch) => {
   } catch (err) {
     return Promise.reject(err);
   }
+};export const deleteAllTutorials = () => async (dispatch) => {
+  try {
+    const res = await TutorialDataService.removeAll();
+
+    dispatch({
+      type: DELETE_ALL_TUTORIALS,
+      payload: res.data,
+    });
+
+    return Promise.resolve(res.data);
+  } catch (err) {
+    return Promise.reject(err);
+  }
 };
 
 export const findTutorialsByTitle = (title) => async (dispatch) => {
