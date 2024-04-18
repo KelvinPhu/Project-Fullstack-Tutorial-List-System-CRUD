@@ -1,0 +1,8 @@
+# Set up DataBase Connection - mongoDB
+spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/Project_TutorialListCRUD
+  
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration

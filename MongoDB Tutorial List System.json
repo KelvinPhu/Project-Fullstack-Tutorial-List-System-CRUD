@@ -1,0 +1,27 @@
+[{
+  "_id": {
+    "$oid": "65ffc1766a40c1250fa47d35"
+  },
+  "title": "Java + Spring Framework",
+  "description": "BackEnd programming language",
+  "published": false,
+  "_class": "com.ProjectFullStack.TutorialSystemCRUD.ProjectFullstackCRUD.model.TutorialList"
+},
+{
+  "_id": {
+    "$oid": "65ffc18d6a40c1250fa47d36"
+  },
+  "title": "ReactJS",
+  "description": "FrontEnd Framework",
+  "published": true,
+  "_class": "com.ProjectFullStack.TutorialSystemCRUD.ProjectFullstackCRUD.model.TutorialList"
+},
+{
+  "_id": {
+    "$oid": "65ffc1986a40c1250fa47d37"
+  },
+  "title": "MongoDB",
+  "description": "Non-SQL Database",
+  "published": false,
+  "_class": "com.ProjectFullStack.TutorialSystemCRUD.ProjectFullstackCRUD.model.TutorialList"
+}]
