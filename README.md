@@ -51,7 +51,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-![1](https://github.com/KelvinPhu/Project-Fullstack-Tutorial-List-System-CRUD/assets/102346766/8896e7be-05f9-40c2-a010-a7a560a697ae)
+https://github.com/KelvinPhu/Project-Fullstack-Tutorial-List-System-CRUD/assets/102346766/38795fed-3832-4c64-aed2-26daf8a469cf
 
 The Project-Fullstack-Tutorial-List-System-CRUD is a comprehensive tutorial management system designed to facilitate the organization and display of tutorial lists entered by users. 
 
