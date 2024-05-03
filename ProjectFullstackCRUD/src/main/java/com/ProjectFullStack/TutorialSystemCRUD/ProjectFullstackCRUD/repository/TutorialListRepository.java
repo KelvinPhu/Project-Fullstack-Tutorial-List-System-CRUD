@@ -1,13 +1,15 @@
 package com.ProjectFullStack.TutorialSystemCRUD.ProjectFullstackCRUD.repository;
 
-import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import com.ProjectFullStack.TutorialSystemCRUD.ProjectFullstackCRUD.model.TutorialList;
 
-import reactor.core.publisher.Flux;
+@Repository
+public interface TutorialListRepository extends JpaRepository<TutorialList, String>{
+	List<TutorialList> findByPublished(boolean published);
 
-public interface TutorialListRepository extends ReactiveMongoRepository<TutorialList, String>{
-	Flux<TutorialList> findByPublished(boolean published);
-
-	Flux<TutorialList> findByTitleContaining(String title);
+	List<TutorialList> findByTitleContaining(String title);
 }

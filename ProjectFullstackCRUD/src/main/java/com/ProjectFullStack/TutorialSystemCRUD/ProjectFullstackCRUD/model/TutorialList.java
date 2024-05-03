@@ -1,13 +1,14 @@
 package com.ProjectFullStack.TutorialSystemCRUD.ProjectFullstackCRUD.model;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Document(collection = "tutorial_list")
+@Entity
+@Table(name = "tutorial_list")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

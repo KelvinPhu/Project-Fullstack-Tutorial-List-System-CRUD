@@ -1,8 +1,17 @@
-# Set up DataBase Connection - mongoDB
+# configuration with application.yml file
 spring:
-  data:
-    mongodb:
-      uri: mongodb://localhost:27017/Project_TutorialListCRUD
-  
-  autoconfigure:
-    exclude: org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration
+  datasource:
+    url: jdbc:sqlserver://aws-server-database.cbwmca88oqto.ap-southeast-2.rds.amazonaws.com:1433;databaseName=TutorialList;encrypt=false
+    driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    username: admin
+    password: password
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.SQLServerDialect
+    show-sql: true
+
+---

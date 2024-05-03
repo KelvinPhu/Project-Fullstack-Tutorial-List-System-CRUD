@@ -1,7 +1,11 @@
 package com.ProjectFullStack.TutorialSystemCRUD.ProjectFullstackCRUD.Controller;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,10 +21,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ProjectFullStack.TutorialSystemCRUD.ProjectFullstackCRUD.model.TutorialList;
 import com.ProjectFullStack.TutorialSystemCRUD.ProjectFullstackCRUD.service.TutorialListService;
 
-import reactor.core.publisher.Flux;
-import reactor.core.publisher.Mono;
-
-
 @RestController
 @RequestMapping("/api/")
 @CrossOrigin(origins = "http://localhost:8081")
@@ -31,7 +31,7 @@ public class TutorialListController {
 	
 	@GetMapping("/tutorials")
 	@ResponseStatus(HttpStatus.OK)
-	public Flux<TutorialList> getAllTutorials(@RequestParam(required = false) String title) {
+	public List<TutorialList> getAllTutorials(@RequestParam(required = false) String title) {
 		if (title == null)
 			return tutorialListService.findAll();
 	    else
@@ -40,37 +40,41 @@ public class TutorialListController {
 
 	@GetMapping("/tutorials/{id}")
 	@ResponseStatus(HttpStatus.OK)
-	public Mono<TutorialList> getTutorialById(@PathVariable("id") String id) {
-	    return tutorialListService.findById(id);
+	public ResponseEntity<TutorialList> getTutorialById(@PathVariable("id") String id) {
+		Optional<TutorialList> tutorialList = tutorialListService.findById(id);
+		return tutorialList.map(ResponseEntity::ok)
+				.orElseGet(() -> ResponseEntity.notFound().build());
 	}
 	
 	@PostMapping("/tutorials")
 	@ResponseStatus(HttpStatus.CREATED)
-	public Mono<TutorialList> createTutorial(@RequestBody TutorialList tutorialList) {
-	    return tutorialListService.save(new TutorialList(tutorialList.getTitle(), tutorialList.getDescription(), false));
+	public TutorialList createTutorial(@RequestBody TutorialList tutorialList) {
+		return tutorialListService.save(new TutorialList(tutorialList.getTitle(), tutorialList.getDescription(), false));
 	}
 	
 	@PutMapping("/tutorials/{id}")
 	@ResponseStatus(HttpStatus.OK)
-	public Mono<TutorialList> updateTutorial(@PathVariable("id") String id, @RequestBody TutorialList tutorial) {
-	    return tutorialListService.update(id, tutorial);
+	public ResponseEntity<TutorialList> updateTutorial(@PathVariable("id") String id, @RequestBody TutorialList tutorial) {
+		Optional<TutorialList> updatedTutorial = tutorialListService.update(id, tutorial);
+		return updatedTutorial.map(ResponseEntity::ok)
+				.orElseGet(() -> ResponseEntity.notFound().build());
 	}
 	
 	@DeleteMapping("/tutorials/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public Mono<Void> deleteTutorial(@PathVariable("id") String id) {
-	    return tutorialListService.deleteById(id);
+	public void deleteTutorial(@PathVariable("id") String id) {
+		tutorialListService.deleteById(id);
 	}
 
 	@DeleteMapping("/tutorials")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public Mono<Void> deleteAllTutorials() {
-	    return tutorialListService.deleteAll();
+	public void deleteAllTutorials() {
+		tutorialListService.deleteAll();
 	}
 	
 	@GetMapping("/tutorials/published")
 	@ResponseStatus(HttpStatus.OK)
-	public Flux<TutorialList> findByPublished() {
+	public List<TutorialList> findByPublished() {
 	    return tutorialListService.findByPublished(true);
 	}
 }
