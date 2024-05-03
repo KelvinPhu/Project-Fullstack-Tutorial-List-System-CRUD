@@ -4,17 +4,10 @@
 
   <h1 align="center">Project Fullstack Tutorial List System CRUD</h1>
 
+  <h3> <a href="https://tutorial-list-frontend-a78b65332e3c.herokuapp.com/" target="_blank">Live Website</a></h3>
+
   <p align="center">
     comprehensive tutorial management system designed to facilitate the organization and display of tutorial lists
-    <br />
-    <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    <a href="">View Demo</a>
-    ·
-    <a href="">Report Bug</a>
-    ·
-    <a href="">Request Feature</a>
   </p>
 </div>
 
