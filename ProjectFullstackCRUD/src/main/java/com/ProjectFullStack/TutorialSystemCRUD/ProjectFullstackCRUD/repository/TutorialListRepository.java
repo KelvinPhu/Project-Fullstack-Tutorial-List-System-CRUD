@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import com.ProjectFullStack.TutorialSystemCRUD.ProjectFullstackCRUD.model.TutorialList;
 
 @Repository
-public interface TutorialListRepository extends JpaRepository<TutorialList, String>{
+public interface TutorialListRepository extends JpaRepository<TutorialList, Long>{
 	List<TutorialList> findByPublished(boolean published);
 
 	List<TutorialList> findByTitleContaining(String title);

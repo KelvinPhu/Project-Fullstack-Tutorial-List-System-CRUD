@@ -23,7 +23,7 @@ public class TutorialListService {
 	    return tutorialListRepo.findByTitleContaining(title);
 	}
 
-	public Optional<TutorialList> findById(String id) {
+	public Optional<TutorialList> findById(Long id) {
 	    return tutorialListRepo.findById(id);
 	}
 	
@@ -31,7 +31,7 @@ public class TutorialListService {
 		return tutorialListRepo.save(tutorialList);
 	}
 	
-	public Optional<TutorialList> update(String id, TutorialList tutorialList) {
+	public Optional<TutorialList> update(Long id, TutorialList tutorialList) {
 		Optional<TutorialList> optionalTutorial = tutorialListRepo.findById(id);
 		if (optionalTutorial.isPresent()) {
 			tutorialList.setId(id);
@@ -40,7 +40,7 @@ public class TutorialListService {
 		return Optional.empty();
 	}
 	
-	public void deleteById(String id) {
+	public void deleteById(Long id) {
 		tutorialListRepo.deleteById(id);
 	}
 	

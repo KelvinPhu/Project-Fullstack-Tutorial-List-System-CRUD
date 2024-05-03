@@ -40,7 +40,7 @@ public class TutorialListController {
 
 	@GetMapping("/tutorials/{id}")
 	@ResponseStatus(HttpStatus.OK)
-	public ResponseEntity<TutorialList> getTutorialById(@PathVariable("id") String id) {
+	public ResponseEntity<TutorialList> getTutorialById(@PathVariable("id") Long id) {
 		Optional<TutorialList> tutorialList = tutorialListService.findById(id);
 		return tutorialList.map(ResponseEntity::ok)
 				.orElseGet(() -> ResponseEntity.notFound().build());
@@ -54,7 +54,7 @@ public class TutorialListController {
 	
 	@PutMapping("/tutorials/{id}")
 	@ResponseStatus(HttpStatus.OK)
-	public ResponseEntity<TutorialList> updateTutorial(@PathVariable("id") String id, @RequestBody TutorialList tutorial) {
+	public ResponseEntity<TutorialList> updateTutorial(@PathVariable("id") Long id, @RequestBody TutorialList tutorial) {
 		Optional<TutorialList> updatedTutorial = tutorialListService.update(id, tutorial);
 		return updatedTutorial.map(ResponseEntity::ok)
 				.orElseGet(() -> ResponseEntity.notFound().build());
@@ -62,7 +62,7 @@ public class TutorialListController {
 	
 	@DeleteMapping("/tutorials/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void deleteTutorial(@PathVariable("id") String id) {
+	public void deleteTutorial(@PathVariable("id") Long id) {
 		tutorialListService.deleteById(id);
 	}
 
